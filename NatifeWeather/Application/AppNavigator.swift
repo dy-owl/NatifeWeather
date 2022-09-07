@@ -17,7 +17,7 @@ class AppNavigator: ScreenNavigatorProtocol {
         case main
     }
     
-    private let appNavigationController = UINavigationController()
+    private let appNavigationController = BaseNavigationController()
     private let window: UIWindow
     
     init(window: UIWindow) {

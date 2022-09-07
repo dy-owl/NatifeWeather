@@ -21,21 +21,21 @@ class ScreenNavigator {
         case asRoot
     }
 
-    internal let navigationController: UINavigationController
+    internal let navigationController: BaseNavigationController
 
-    required init(navigationController: UINavigationController) {
+    required init(navigationController: BaseNavigationController) {
         self.navigationController = navigationController
     }
 
     convenience init() {
-        self.init(navigationController: UINavigationController())
+        self.init(navigationController: BaseNavigationController())
     }
 
     func makeNavigator<T: ScreenNavigator>() -> T {
         return makeNavigator(navController: navigationController)
     }
 
-    func makeNavigator<T: ScreenNavigator>(navController: UINavigationController) -> T {
+    func makeNavigator<T: ScreenNavigator>(navController: BaseNavigationController) -> T {
         return T(navigationController: navController)
     }
 

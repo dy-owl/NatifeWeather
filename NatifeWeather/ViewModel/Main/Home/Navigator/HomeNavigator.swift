@@ -9,6 +9,7 @@ class HomeNavigator: ScreenNavigator, ScreenNavigatorProtocol {
             
     enum Destination {
         case home
+        case map
     }
     
     weak var delegate: AppNavigatorDelegate?
@@ -17,6 +18,8 @@ class HomeNavigator: ScreenNavigator, ScreenNavigatorProtocol {
         switch destination {
         case .home:
             toHome()
+        case .map:
+            toMap()
         }
     }
     
@@ -24,5 +27,10 @@ class HomeNavigator: ScreenNavigator, ScreenNavigatorProtocol {
         let viewController = HomeViewController.storyboardViewController()
         viewController.navigator = self
         navigate(to: viewController, type: .asRoot)
+    }
+    
+    private func toMap() {
+        let navigator: MapNavigator = makeNavigator()
+        navigator.navigate(to: .map)
     }
 }
